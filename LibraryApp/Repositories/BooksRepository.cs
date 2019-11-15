@@ -3,7 +3,7 @@ using LibraryApp.Models;
 using System;
 using System.Collections.Generic;
 
-namespace LibraryApp
+namespace LibraryApp.Repositories
 {
     public class BooksRepository
     {

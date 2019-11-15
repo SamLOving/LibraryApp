@@ -1,8 +1,15 @@
-﻿using Microsoft.AspNetCore.Builder;
+﻿using HotChocolate;
+using HotChocolate.AspNetCore;
+using HotChocolate.Execution;
+using HotChocolate.Execution.Configuration;
+using LibraryApp.Queries;
+using LibraryApp.Repositories;
+using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using System;
 
 namespace LibraryApp
 {

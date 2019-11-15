@@ -1,4 +1,5 @@
-﻿using System;
+﻿using LibraryApp.Models;
+using System;
 using System.Collections.Generic;
 
 namespace LibraryApp.DTO
@@ -6,8 +7,8 @@ namespace LibraryApp.DTO
     [Serializable]
     public class BookRequest : IEquatable<BookRequest>
     {
-        public IEnumerable<string> Id { get; set; }
-        public IEnumerable<string> Genre { get; set; }
+        public IEnumerable<string> Ids { get; set; }
+        public IEnumerable<Genre> Genres { get; set; }
 
         public bool Equals(BookRequest other)
         {

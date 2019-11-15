@@ -1,5 +1,6 @@
 ﻿using LibraryApp.DTO;
 using LibraryApp.Models;
+using LibraryApp.Repositories;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
@@ -18,7 +19,7 @@ namespace LibraryApp.Controllers
             _booksRepository = booksRepository;
         }
 
-        [HttpGet]
+        [HttpPost]
         public IActionResult GetBooks([FromBody] BookRequest bookRequest)
         {
             var books = GetRequestedBooks(bookRequest, _booksRepository.Books);
@@ -30,8 +31,9 @@ namespace LibraryApp.Controllers
             ICollection<Book> requestedBooks = new List<Book>();
             if (bookRequest != null)
             {
-                var ids = bookRequest.Id.Select(id => id);
-                requestedBooks = books.Where(book => ids.Contains(book.Id)).Select(book => book).ToList();
+                requestedBooks = books
+                    .Where(book => bookRequest.Ids.Contains(book.Id) && bookRequest.Genres.Contains(book.Genre))
+                    .Select(book => book).ToList();
             }
             else
             {
