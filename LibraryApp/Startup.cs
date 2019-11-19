@@ -5,7 +5,6 @@ using HotChocolate.Execution.Configuration;
 using LibraryApp.Queries;
 using LibraryApp.Repositories;
 using LibraryApp.Resolvers;
-using LibraryApp.Types;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;

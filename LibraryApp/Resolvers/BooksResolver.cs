@@ -3,7 +3,6 @@ using LibraryApp.DataLoaders;
 using LibraryApp.DTO;
 using LibraryApp.Logging;
 using LibraryApp.Models;
-using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading;
@@ -36,15 +35,6 @@ namespace LibraryApp.Resolvers
                 IReadOnlyList<IReadOnlyList<Book>> books = t.Result;
                 return books.ElementAt(0);
             }, cancellationToken);
-        }
-
-        public Book GetDefaultBookAsync(string author)
-        {
-            return new Book
-            {
-                Author = author,
-                Title = "The story..."
-            };
         }
     }
 }

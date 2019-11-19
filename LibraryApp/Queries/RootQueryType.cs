@@ -15,11 +15,6 @@ namespace LibraryApp.Queries
                 .Argument("ids", a => a.Type<NonNullType<ListType<StringType>>>())
                 .Argument("genres", a => a.Type<NonNullType<ListType<EnumType<Genre>>>>())
                 .Type<NonNullType<ListType<NonNullType<BookType>>>>();
-
-            descriptor
-                .Field<BooksResolver>(r => r.GetDefaultBookAsync(default))
-                .Argument("author", a => a.Type<NonNullType<StringType>>())
-                .Type<NonNullType<BookType>>();
         }
     }
 }

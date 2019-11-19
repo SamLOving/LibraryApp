@@ -28,18 +28,13 @@ namespace LibraryApp.Controllers
 
         private ICollection<Book> GetRequestedBooks(BookRequest bookRequest, ICollection<Book> books)
         {
-            ICollection<Book> requestedBooks = new List<Book>();
             if (bookRequest != null)
             {
-                requestedBooks = books
+                return books
                     .Where(book => bookRequest.Ids.Contains(book.Id) && bookRequest.Genres.Contains(book.Genre))
                     .Select(book => book).ToList();
             }
-            else
-            {
-                requestedBooks = books;
-            }
-            return requestedBooks;
+            return books;
         }
     }
 }
