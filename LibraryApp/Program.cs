@@ -1,6 +1,9 @@
 ﻿using System.IO;
 using Microsoft.AspNetCore;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.Extensions.Logging;
+using NLog.Extensions.Logging;
+using NLog.Web;
 
 namespace LibraryApp
 {
@@ -9,10 +12,17 @@ namespace LibraryApp
         public static void Main(string[] args)
         {
             BuildWebHost(args).Run();
-
         }
 
         public static IWebHost BuildWebHost(string[] args) => WebHost.CreateDefaultBuilder(args)
+            .ConfigureLogging((hostingContext, logging) => 
+            {
+                logging.AddConfiguration(hostingContext.Configuration.GetSection("Logging"));
+                logging.AddConsole();
+                logging.AddDebug();
+                logging.AddEventSourceLogger();
+                logging.AddNLog();
+            })
             .UseKestrel()
             .UseContentRoot(Directory.GetCurrentDirectory())
             .UseIISIntegration()
