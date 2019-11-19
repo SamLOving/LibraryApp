@@ -24,7 +24,7 @@ namespace LibraryApp.DataLoaders
 
         protected override Task<IReadOnlyList<Result<IReadOnlyList<Book>>>> FetchAsync(IReadOnlyList<BookRequest> keys, CancellationToken cancellationToken)
         {
-            Logger.Info("## Fetching books from repository.");
+            Logger.Info("## Fetching books from repository using BooksDataLoader.");
             var booksByRequests = new List<Result<IReadOnlyList<Book>>>();
             foreach (var key in keys)
             {

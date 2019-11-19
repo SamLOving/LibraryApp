@@ -15,6 +15,12 @@ namespace LibraryApp.Queries
                 .Argument("ids", a => a.Type<NonNullType<ListType<StringType>>>())
                 .Argument("genres", a => a.Type<NonNullType<ListType<EnumType<Genre>>>>())
                 .Type<NonNullType<ListType<NonNullType<BookType>>>>();
+
+            descriptor
+                .Name("Books")
+                .Field<BooksResolver>(r => r.GetBooksByIdentifiersAsync(default, default, default))
+                .Argument("ids", a => a.Type<NonNullType<ListType<StringType>>>())
+                .Type<NonNullType<ListType<NonNullType<BookType>>>>();
         }
     }
 }

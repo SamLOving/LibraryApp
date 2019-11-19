@@ -36,5 +36,16 @@ namespace LibraryApp.Resolvers
                 return books.ElementAt(0);
             }, cancellationToken);
         }
+
+        public async Task<IReadOnlyCollection<Book>> GetBooksByIdentifiersAsync(
+            IEnumerable<string> ids, 
+            [DataLoader] BooksByIdsDataLoader dataLoader,
+            CancellationToken cancellationToken)
+        {
+            Logger.Info("## Resolving books by identifiers");
+
+            var readOnlyList = await dataLoader.LoadAsync(ids.ToList(), cancellationToken);
+            return readOnlyList;
+        }
     }
 }
