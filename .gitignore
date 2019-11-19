@@ -1,6 +1,7 @@
 #Build results
-
 [Dd]ebug/
+[Bb]in/
+[Oo]bj/
 
 #Project Related
 .vs/
